@@ -35,6 +35,12 @@ function checkCollisions(){
         }
         // Проверяем столкновение с нижней трубой
         if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y+bird.r>p.y+pg) {
+            console.log('v1',bird.x+bird.r>p.x);
+            console.log('v1',bird.x+bird.r,p.x);
+            console.log('v2',bird.x-bird.r<p.x+pw);
+            console.log('v2',bird.x-bird.r,p.x+pw);
+            console.log('v3',bird.y+bird.r>p.y+pg);
+            console.log('v3',bird.y+bird.r,p.y+pg);
             console.log('Нижняя труба');
             return true;
         }
@@ -71,8 +77,14 @@ function update(){
 }
 
 function endGame(){
-    console.log('Игра окончена! Ваш счёт: '+score);
-    location.reload();
+    console.log('Игра окончена! Ваш счёт: ' + score);
+    //location.reload();
+    isGameStarted = false;
+    startScreen.style.display = 'block';
+    bird.s = 0;
+    bird.y = 200;
+    //pipes = [];
+    //update();
 }
 
 document.addEventListener('click',()=>{
