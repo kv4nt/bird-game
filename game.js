@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 const startScreen = document.getElementById('startScreen');
 
 let isGameStarted = false, score = 0;
-const bird = {x:100,y:200,r:15,g:0.5,s:0,jp:-10};
+const bird = {x:100,y:200,r:10,g:0.5,s:0,jp:-10};
 let pipes = [];
-const pw = 80, pg = 150, ps = 2;
+const pw = 80, pg = 50, ps = 2;
 
 function createPipe(){
     const y = Math.random()*(canvas.height-pg-2*pw)+pw;
@@ -44,7 +44,7 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
 
-    if(Date.now()%150===0) createPipe();
+    if(Date.now()%350===0) createPipe();
 
     for(let p of pipes){
         p.x-=ps;
