@@ -29,9 +29,15 @@ function drawBird(){
 function checkCollisions(){
     for(let p of pipes){
         // Проверяем столкновение с верхней трубой
-        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) return true;
+        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
+        console.log('Верхняя труба');
+            return true;
+        }
         // Проверяем столкновение с нижней трубой
-        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y+bird.r>p.y+pg) return true;
+        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y+bird.r>p.y+pg) {
+            console.log('Нижняя труба');
+            return true;
+        }
     }
     return false;
 }
@@ -75,7 +81,7 @@ document.addEventListener('click',()=>{
         startScreen.style.display='none';
         bird.s=0;
         bird.y=200;
-        //update();
+        update();
     }else{
         bird.s=bird.jp;
     }
