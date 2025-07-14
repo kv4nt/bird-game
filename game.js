@@ -75,7 +75,7 @@ document.addEventListener('click',()=>{
         startScreen.style.display='none';
         bird.s=0;
         bird.y=200;
-        update();
+        //update();
     }else{
         bird.s=bird.jp;
     }
