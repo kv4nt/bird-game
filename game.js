@@ -11,7 +11,7 @@ const bird = {
     jumpPower: -10
 };
 
-const pipes = [];
+let pipes = []; // Изменено с const на let
 const pipeWidth = 80;
 const pipeGap = 150;
 const pipeSpeed = 2;
