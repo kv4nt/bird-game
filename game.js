@@ -29,7 +29,14 @@ function drawBird(){
 
 function checkCollisions(){
     for(let p of pipes){
-        if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+pw&&(bird.y-bird.r<p.y||bird.y+bird.r>p.y+pg))return true;
+        if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+pw&&(bird.y-bird.r<p.y||bird.y+bird.r>p.y+pg)) {
+            console.log('collision');
+            console.log('v1',bird.x+bird.r>p.x);
+            console.log('v2',bird.x-bird.r<p.x+pw);
+            console.log('v3',bird.y-bird.r<p.y);
+            console.log('v4',bird.y+bird.r>p.y+pg);
+            return true;
+        }
     }
     return false;
 }
@@ -40,7 +47,7 @@ function update(){
 
     bird.s+=bird.g;
     bird.y+=bird.s;
-    console.log('pipegap',Date.now()%pipeGap);
+    //console.log('pipegap',Date.now()%pipeGap);
     if(Date.now()%pipeGap<=100) {
         console.log('create Pipe');
         createPipe();
