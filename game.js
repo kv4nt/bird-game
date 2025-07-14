@@ -5,7 +5,7 @@ const startScreen = document.getElementById('startScreen');
 let isGameStarted = false, score = 0;
 const bird = {x:100,y:200,r:15,g:0.5,s:0,jp:-10};
 let pipes = [];
-const pw = 380, pg = 150, ps = 2;
+const pw = 80, pg = 50, ps = 2;
 
 function createPipe(){
     const y = Math.random()*(canvas.height-pg-2*pw)+pw;
