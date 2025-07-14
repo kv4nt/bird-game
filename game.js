@@ -1,103 +1,76 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+const startScreen = document.getElementById('startScreen');
 
-// Настройки игры
-const bird = {
-    x: 100,
-    y: 200,
-    radius: 15,
-    gravity: 0.5,
-    speed: 0,
-    jumpPower: -10
-};
+let isGameStarted = false, score = 0;
+const bird = {x:100,y:200,r:15,g:0.5,s:0,jp:-10};
+let pipes = [];
+const pw = 80, pg = 150, ps = 2;
 
-let pipes = []; // Изменено с const на let
-const pipeWidth = 80;
-const pipeGap = 150;
-const pipeSpeed = 2;
-
-let score = 0;
-
-// Создание трубы
-function createPipe() {
-    const y = Math.random() * (canvas.height - pipeGap - 2 * pipeWidth) + pipeWidth;
-    pipes.push({
-        x: canvas.width,
-        y: y,
-        passed: false
-    });
+function createPipe(){
+    const y = Math.random()*(canvas.height-pg-2*pw)+pw;
+    pipes.push({x:canvas.width,y,passed:false});
 }
 
-// Отрисовка трубы
-function drawPipe(pipe) {
-    ctx.fillStyle = '#009900';
-    ctx.fillRect(pipe.x, 0, pipeWidth, pipe.y - pipeWidth);
-    ctx.fillRect(pipe.x, pipe.y + pipeGap, pipeWidth, canvas.height - pipe.y - pipeGap);
+function drawPipe(p){
+    ctx.fillStyle='#009900';
+    ctx.fillRect(p.x,0,pw,p.y-pw);
+    ctx.fillRect(p.x,p.y+pg,pw,canvas.height-p.y-pg);
 }
 
-// Отрисовка птицы
-function drawBird() {
+function drawBird(){
     ctx.beginPath();
-    ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#ff6600';
+    ctx.arc(bird.x,bird.y,bird.r,0,Math.PI*2);
+    ctx.fillStyle='#ff6600';
     ctx.fill();
 }
 
-// Обработка столкновений
-function checkCollisions() {
-    for (let pipe of pipes) {
-        if (bird.x + bird.radius > pipe.x &&
-            bird.x - bird.radius < pipe.x + pipeWidth &&
-            (bird.y - bird.radius < pipe.y ||
-                bird.y + bird.radius > pipe.y + pipeGap)) {
-            return true;
-        }
+function checkCollisions(){
+    for(let p of pipes){
+        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw &&
+            (bird.y-bird.r<p.y || bird.y+bird.r>p.y+pg)) return true;
     }
     return false;
 }
 
-// Обновление игры
-function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function update(){
+    if(!isGameStarted) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    // Движение птицы
-    bird.speed += bird.gravity;
-    bird.y += bird.speed;
+    bird.s+=bird.g;
+    bird.y+=bird.s;
 
-    // Создание новых труб
-    if (Date.now() % 1500 === 0) {
-        createPipe();
+    if(Date.now()%1500===0) createPipe();
+
+    for(let p of pipes){
+        p.x-=ps;
+        drawPipe(p);
+        if(!p.passed && p.x===bird.x) {score++; p.passed=true;}
     }
 
-    // Движение труб
-    for (let pipe of pipes) {
-        pipe.x -= pipeSpeed;
-        drawPipe(pipe);
-
-        if (!pipe.passed && pipe.x === bird.x) {
-            score++;
-            pipe.passed = true;
-        }
-    }
-
-    // Удаление труб за пределами экрана
-    pipes = pipes.filter(pipe => pipe.x > -pipeWidth);
-
+    pipes = pipes.filter(p => p.x > -pw);
     drawBird();
 
-    // Проверка столкновений
-    if (bird.y + bird.radius > canvas.height || checkCollisions()) {
-        alert('Игра окончена! Ваш счёт: ' + score);
-        location.reload();
+    if(bird.y+bird.r>canvas.height || checkCollisions()){
+        endGame();
     }
-
     requestAnimationFrame(update);
 }
 
-// Управление
+function endGame(){
+    console.log('Игра окончена! Ваш счёт: ' + score);
+    location.reload();
+}
+
 document.addEventListener('click', () => {
-    bird.speed = bird.jumpPower;
+    if(!isGameStarted){
+        isGameStarted = true;
+        startScreen.style.display = 'none';
+        bird.s = 0;
+        bird.y = 200;
+    }else{
+        bird.s = bird.jp;
+    }
 });
 
-// Запуск игры
 update();

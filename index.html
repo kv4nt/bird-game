@@ -9,10 +9,20 @@
             margin: 0 auto;
             background: #75bbfd;
         }
+        .start-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <canvas id="gameCanvas" width="400" height="600"></canvas>
+<div class="start-screen" id="startScreen">Нажмите на экран для старта</div>
 <script src="game.js"></script>
 </body>
 </html>
