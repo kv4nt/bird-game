@@ -64,6 +64,7 @@ function endGame(){
     startScreen.style.display = 'block';
     bird.s = 0;
     bird.y = 200;
+    update();
 }
 
 document.addEventListener('click', () => {
@@ -79,6 +80,6 @@ document.addEventListener('click', () => {
 
 update();
 
-startScreen.addEventListener('click', () => {
+startScreen.click(function()  {
     update();
 });
