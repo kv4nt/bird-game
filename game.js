@@ -1,14 +1,15 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-const startScreen = document.getElementById('startScreen');
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+const startScreen=document.getElementById('startScreen');
+const scoreEl=document.getElementById('score');
 
-let isGameStarted = false, score = 0;
-const bird = {x:100,y:200,r:10,g:0.5,s:0,jp:-10};
-let pipes = [];
-const pw = 80, pg = 50, ps = 2;
+let isGameStarted=false,score=0;
+const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
+let pipes=[];
+const pw=80,pg=200,ps=2,pipeGap=2500;
 
 function createPipe(){
-    const y = Math.random()*(canvas.height-pg-2*pw)+pw;
+    const y=Math.random()*(canvas.height-pg-2*pw)+pw;
     pipes.push({x:canvas.width,y,passed:false});
 }
 
@@ -27,35 +28,30 @@ function drawBird(){
 
 function checkCollisions(){
     for(let p of pipes){
-        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw &&
-            (bird.y-bird.r<p.y || bird.y+bird.r>p.y+pg))
-        {
-            console.log('collision');
-            return true;
-        }
+        if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+pw&&(bird.y-bird.r<p.y||bird.y+bird.r>p.y+pg))return true;
     }
     return false;
 }
 
 function update(){
-    if(!isGameStarted) return;
+    if(!isGameStarted)return;
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
     bird.s+=bird.g;
     bird.y+=bird.s;
 
-    if(Date.now()%350===0) createPipe();
+    if(Date.now()%pipeGap===0)createPipe();
 
     for(let p of pipes){
         p.x-=ps;
         drawPipe(p);
-        if(!p.passed && p.x===bird.x) {score++; p.passed=true;}
+        if(!p.passed&&p.x===bird.x){score++;p.passed=true;scoreEl.innerText='Счет: '+score;}
     }
 
-    pipes = pipes.filter(p => p.x > -pw);
+    pipes=pipes.filter(p=>p.x>-pw);
     drawBird();
 
-    if(bird.y+bird.r>canvas.height || checkCollisions()){
+    if(bird.y+bird.r>canvas.height||checkCollisions()){
         endGame();
     }
     requestAnimationFrame(update);
@@ -72,20 +68,16 @@ function endGame(){
     //update();
 }
 
-document.addEventListener('click', () => {
+document.addEventListener('click',()=>{
     if(!isGameStarted){
-        isGameStarted = true;
-        startScreen.style.display = 'none';
-        bird.s = 0;
-        bird.y = 200;
+        isGameStarted=true;
+        startScreen.style.display='none';
+        bird.s=0;
+        bird.y=200;
         update();
     }else{
-        bird.s = bird.jp;
+        bird.s=bird.jp;
     }
 });
 
 update();
-
-// startScreen.click(function()  {
-//     update();
-// });

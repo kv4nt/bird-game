@@ -1,28 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Flappy Ball</title>
     <style>
-        canvas {
-            display: block;
-            margin: 0 auto;
-            background: #75bbfd;
-        }
-        .start-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px;
-            text-align: center;
-        }
+        canvas{display:block;margin:0 auto;background:#75bbfd}
+        .start-screen{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:24px;text-align:center}
+        #score{position:absolute;top:10px;left:10px;color:white;font-size:20px}
     </style>
 </head>
 <body>
 <canvas id="gameCanvas" width="400" height="600"></canvas>
-<div class="start-screen" id="startScreen" onclick="update();">Нажмите на экран для старта</div>
-<script src="game.js?v=25223"></script>
+<div class="start-screen" id="startScreen">Нажмите на экран для старта</div>
+<div id="score">Счет: 0</div>
+<script src="game.js"></script>
 </body>
 </html>
