@@ -41,7 +41,7 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
     console.log('pipegap',Date.now()%pipeGap);
-    if(Date.now()%pipeGap===0) {
+    if(Date.now()%pipeGap<=10) {
         console.log('create Pipe');
         createPipe();
     }
