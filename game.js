@@ -9,7 +9,6 @@ let pipes=[];
 const pw=80,pg=200,ps=2,pipeGap=2500;
 
 function createPipe(){
-    console.log('create pipe')
     const y=Math.random()*(canvas.height-pg-2*pw)+pw;
     pipes.push({x:canvas.width,y,passed:false});
 }
@@ -29,14 +28,10 @@ function drawBird(){
 
 function checkCollisions(){
     for(let p of pipes){
-        if(bird.x+bird.r>p.x&&bird.x-bird.r<p.x+pw&&(bird.y-bird.r<p.y||bird.y+bird.r>p.y+pg)) {
-            console.log('collision');
-            console.log('v1',bird.x+bird.r>p.x);
-            console.log('v2',bird.x-bird.r<p.x+pw);
-            console.log('v3',bird.y-bird.r<p.y);
-            console.log('v4',bird.y+bird.r>p.y+pg);
-            return true;
-        }
+        // Проверяем столкновение с верхней трубой
+        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) return true;
+        // Проверяем столкновение с нижней трубой
+        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y+bird.r>p.y+pg) return true;
     }
     return false;
 }
@@ -47,36 +42,31 @@ function update(){
 
     bird.s+=bird.g;
     bird.y+=bird.s;
-    //console.log('pipegap',Date.now()%pipeGap);
-    if(Date.now()%pipeGap<=100) {
-        console.log('create Pipe');
-        createPipe();
-    }
+
+    if(Date.now()%pipeGap<=100)createPipe();
 
     for(let p of pipes){
         p.x-=ps;
         drawPipe(p);
-        if(!p.passed&&p.x===bird.x){score++;p.passed=true;scoreEl.innerText='Счет: '+score;}
+        if(!p.passed && p.x+pw<bird.x){
+            score++;
+            p.passed=true;
+            scoreEl.innerText='Счет: '+score;
+        }
     }
 
     pipes=pipes.filter(p=>p.x>-pw);
     drawBird();
 
-    if(bird.y+bird.r>canvas.height||checkCollisions()){
+    if(bird.y+bird.r>canvas.height || checkCollisions()){
         endGame();
     }
     requestAnimationFrame(update);
 }
 
 function endGame(){
-    console.log('Игра окончена! Ваш счёт: ' + score);
-    //location.reload();
-    isGameStarted = false;
-    startScreen.style.display = 'block';
-    bird.s = 0;
-    bird.y = 200;
-    //pipes = [];
-    //update();
+    console.log('Игра окончена! Ваш счёт: '+score);
+    location.reload();
 }
 
 document.addEventListener('click',()=>{
