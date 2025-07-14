@@ -9,6 +9,7 @@ let pipes=[];
 const pw=80,pg=200,ps=2,pipeGap=2500;
 
 function createPipe(){
+    console.log('create pipe')
     const y=Math.random()*(canvas.height-pg-2*pw)+pw;
     pipes.push({x:canvas.width,y,passed:false});
 }
@@ -39,7 +40,7 @@ function update(){
 
     bird.s+=bird.g;
     bird.y+=bird.s;
-
+    console.log('pipegap',Date.now()%pipeGap);
     if(Date.now()%pipeGap===0)createPipe();
 
     for(let p of pipes){
