@@ -40,7 +40,7 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
 
-    if(Date.now()%1500===0) createPipe();
+    if(Date.now()%150===0) createPipe();
 
     for(let p of pipes){
         p.x-=ps;
@@ -59,7 +59,11 @@ function update(){
 
 function endGame(){
     console.log('Игра окончена! Ваш счёт: ' + score);
-    location.reload();
+    //location.reload();
+    isGameStarted = false;
+    startScreen.style.display = 'block';
+    bird.s = 0;
+    bird.y = 200;
 }
 
 document.addEventListener('click', () => {
