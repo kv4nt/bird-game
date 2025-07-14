@@ -64,6 +64,7 @@ function endGame(){
     startScreen.style.display = 'block';
     bird.s = 0;
     bird.y = 200;
+    pipes = [];
     //update();
 }
 
