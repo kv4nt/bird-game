@@ -74,3 +74,7 @@ document.addEventListener('click', () => {
 });
 
 update();
+
+startScreen.addEventListener('click', () => {
+    update();
+});
