@@ -9,7 +9,8 @@ let pipes=[];
 const pw=80,pg=150,ps=2,pipeGap=2500;
 
 function createPipe(){
-    const y=Math.random()*(canvas.height-pg-2*pw)+pw;
+    //const y=Math.random()*(canvas.height-pg-2*pw)+pw;
+    const y=Math.random()*200;
     pipes.push({x:canvas.width,y,passed:false});
 }
 
