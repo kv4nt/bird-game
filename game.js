@@ -8,7 +8,7 @@ const birdSEl = document.getElementById('birdS');
 const birdGEl = document.getElementById('birdG');
 
 // Параметры спрайта
-const SPRITE_W = 191, SPRITE_H = 161, FRAMES = 4, ANIM_SPEED = 120;
+const SPRITE_W = 191, SPRITE_H = 161, FRAMES = 3, ANIM_SPEED = 120;
 // Загружаем изображение птицы
 const birdImg = new Image();
 birdImg.src = 'drago.png';
@@ -295,7 +295,7 @@ function setSize(w, h, force)
             }
         }
     }
-    if (this.canvasdiv && !this.isDomFree)
+    if (this.canvasdiv && !this.isDomFree && typeof jQuery === 'function')
     {
         jQuery(this.canvasdiv).css({"width": Math.round(w) + "px",
             "height": Math.round(h) + "px",
