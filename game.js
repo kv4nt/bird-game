@@ -33,11 +33,13 @@ function drawPipe(p) {
 // Новая функция отрисовки птицы
 function drawBird() {
     const frameX = currentFrame * SPRITE_W;
-    ctx.drawImage(
-        birdImg, frameX, 0, SPRITE_W, SPRITE_H,
-        bird.x - SPRITE_W/2, bird.y - SPRITE_H/2,
-        SPRITE_W, SPRITE_H
-    );
+    ctx.drawImage(birdImg, bird.x-bird.w/2, bird.y-bird.h/2, bird.w, bird.h);
+
+    // ctx.drawImage(
+    //     birdImg, frameX, 0, SPRITE_W, SPRITE_H,
+    //     bird.x - SPRITE_W/2, bird.y - SPRITE_H/2,
+    //     SPRITE_W, SPRITE_H
+    // );
 }
 
 function updateAnimation() {
