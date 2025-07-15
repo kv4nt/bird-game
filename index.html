@@ -4,6 +4,7 @@
     <style>
         canvas{display:block;margin:0 auto;background:#75bbfd}
         .start-screen{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:24px;text-align:center}
+        .score-screen{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);color:black;font-size:24px;text-align:center}
         #score{position:absolute;top:10px;left:10px;color:blue;font-size:20px}
         #birdY{position:absolute;top:30px;left:10px;color:red;font-size:20px}
         #birdS{position:absolute;top:50px;left:10px;color:brown;font-size:20px}
@@ -13,6 +14,7 @@
 <body>
 <canvas id="gameCanvas" width="400" height="600"></canvas>
 <div class="start-screen" id="startScreen">Нажмите на экран для старта</div>
+<div class="score-screen" id="scoreScreen"></div>
 <div id="score">Счет: 0</div>
 <div id="birdY"></div>
 <div id="birdS"></div>

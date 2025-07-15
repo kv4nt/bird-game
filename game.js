@@ -1,6 +1,7 @@
 const canvas=document.getElementById('gameCanvas');
 const ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('startScreen');
+const scoreScreen=document.getElementById('scoreScreen');
 const scoreEl=document.getElementById('score');
 const birdYEl=document.getElementById('birdY');
 const birdSEl=document.getElementById('birdS');
@@ -108,9 +109,14 @@ function endGame(){
     //location.reload();
     isGameStarted = false;
     startScreen.style.display = 'block';
+    scoreScreen.innerText = 'Вы заработали '+score+' очков!';
+    scoreScreen.style.display = 'block';
     bird.s = 0;
     bird.y = 200;
-    location.reload();
+    pipes=[];
+    //location.reload();
+
+
     //pipes = [];
     //update();
 }
@@ -119,6 +125,8 @@ document.addEventListener('click',()=>{
     if(!isGameStarted){
         isGameStarted=true;
         startScreen.style.display='none';
+        scoreScreen.style.display='none';
+        scoreScreen.innerText = '';
         bird.s=0;
         bird.y=200;
         update();
