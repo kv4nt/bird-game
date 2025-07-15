@@ -56,6 +56,7 @@ function checkCollisions(){
             console.log('Нижняя труба');
             return true;
         }
+        return false;
     }
     return false;
 }
