@@ -27,6 +27,8 @@ function drawBird(){
 }
 
 function checkCollisions(){
+    console.log('bird x',bird.x);
+    console.log('bird y',bird.y);
     console.log('pipes',pipes);
     for(let p of pipes){
         // Проверяем столкновение с верхней трубой
