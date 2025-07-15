@@ -22,6 +22,7 @@ const pw = 80, pg = 250, ps = 2, pipeGap = 2500;
 function createPipe() {
     const y = Math.random() * 300;
     pipes.push({ x: canvas.width, y, passed: false });
+    console.log('pipes',pipes);
 }
 
 function drawPipe(p) {
