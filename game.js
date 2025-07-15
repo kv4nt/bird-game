@@ -3,8 +3,8 @@ const ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('startScreen');
 const scoreEl=document.getElementById('score');
 const birdXEl=document.getElementById('birdX');
-const birdSEl=document.getElementById('birdY');
-const birdGEl=document.getElementById('birdY');
+const birdSEl=document.getElementById('birdS');
+const birdGEl=document.getElementById('birdG');
 
 let isGameStarted=false,score=0;
 const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
