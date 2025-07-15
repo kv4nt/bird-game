@@ -8,7 +8,7 @@ const birdSEl = document.getElementById('birdS');
 const birdGEl = document.getElementById('birdG');
 
 // Параметры спрайта
-const SPRITE_W = 40, SPRITE_H = 40, FRAMES = 4, ANIM_SPEED = 100;
+const SPRITE_W = 20, SPRITE_H = 20, FRAMES = 4, ANIM_SPEED = 50;
 // Загружаем изображение птицы
 const birdImg = new Image();
 birdImg.src = 'bird.png';
@@ -107,6 +107,7 @@ function endGame() {
     bird.s = 0;
     bird.y = 200;
     pipes = [];
+    location.reload(2000);
 }
 
 document.addEventListener('click',()=>{
