@@ -80,7 +80,7 @@ function update(){
     //if(Date.now()%pipeGap<=50)createPipe();
     //if(Date.now()%pipeGap===0)createPipe();
     //setInterval(createPipe,2500*60);
-    if(pipes.length <= 3) {
+    if(pipes.length <= 1) {
         createPipe();
     }
 
