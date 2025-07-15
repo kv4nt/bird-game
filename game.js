@@ -6,7 +6,7 @@ const scoreEl=document.getElementById('score');
 let isGameStarted=false,score=0;
 const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
 let pipes=[];
-const pw=80,pg=200,ps=2,pipeGap=2500;
+const pw=80,pg=500,ps=2,pipeGap=2500;
 
 function createPipe(){
     const y=Math.random()*(canvas.height-pg-2*pw)+pw;
@@ -37,7 +37,7 @@ function checkCollisions(){
             console.log('v1',bird.x+bird.r,p.x);
             console.log('v2',bird.x-bird.r<p.x+pw);
             console.log('v2',bird.x-bird.r,p.x+pw);
-            console.log('v3',bird.y+bird.r>p.y);
+            console.log('v3',bird.y+bird.r<p.y);
             console.log('v3',bird.y+bird.r,p.y);
         console.log('Верхняя труба');
             return true;
