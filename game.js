@@ -3,7 +3,8 @@ const ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('startScreen');
 const scoreEl=document.getElementById('score');
 const birdXEl=document.getElementById('birdX');
-const birdYEl=document.getElementById('birdY');
+const birdSEl=document.getElementById('birdY');
+const birdGEl=document.getElementById('birdY');
 
 let isGameStarted=false,score=0;
 const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
@@ -73,7 +74,8 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
     birdXEl.innerText = 'X: '+bird.x;
-    birdYEl.innerText = 'Y: '+bird.y;
+    birdSEl.innerText = 'S: '+bird.s;
+    birdGEl.innerText = 'G: '+bird.g;
 
     //if(Date.now()%pipeGap<=50)createPipe();
     if(Date.now()%pipeGap===0)createPipe();
