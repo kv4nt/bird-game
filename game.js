@@ -55,9 +55,12 @@ function checkCollisions() {
     // console.log('pipes', pipes);
 
     for (let p of pipes) {
+        if(pipes[0].x + pw >= bird.x) {
+            console.log('pipe is coming',pipes[0].x);
+        }
         // Проверяем столкновение с верхней трубой
         // console.log(p.y,bird.y);
-        if ((pipes[0].x >= bird.x || pipes[0].x + pw >= bird.x) && bird.y <= pipes[0].y) {
+        if ((pipes[0].x >= bird.x || pipes[0].x + pw >= bird.x || pipes[0].x + pw <= bird.x) && bird.y <= pipes[0].y) {
             console.log('p',p);
             console.log('bird',bird);
             console.log('Верхняя труба');
@@ -100,7 +103,7 @@ function update() {
         }
     }
 
-    pipes = pipes.filter(p => p.x > bird.x);
+    pipes = pipes.filter(p => p.x +pw > bird.x);
     drawBird();
 
     if (bird.y + bird.h / 2 > canvas.height || checkCollisions()) {
