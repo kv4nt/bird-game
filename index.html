@@ -5,12 +5,16 @@
         canvas{display:block;margin:0 auto;background:#75bbfd}
         .start-screen{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:24px;text-align:center}
         #score{position:absolute;top:10px;left:10px;color:blue;font-size:20px}
+        #birdX{position:absolute;top:30px;left:10px;color:red;font-size:20px}
+        #birdY{position:absolute;top:50px;left:10px;color:red;font-size:20px}
     </style>
 </head>
 <body>
 <canvas id="gameCanvas" width="400" height="600"></canvas>
 <div class="start-screen" id="startScreen">Нажмите на экран для старта</div>
 <div id="score">Счет: 0</div>
+<div id="birdX"></div>
+<div id="birdY"></div>
 <script src="game.js"></script>
 </body>
 </html>
