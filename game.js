@@ -48,15 +48,17 @@ function updateAnimation() {
 }
 
 function checkCollisions() {
-    console.log('bird x', bird.x);
-    console.log('bird y', bird.y);
-    console.log('bird', bird);
-    console.log('pipes', pipes);
+    // console.log('bird x', bird.x);
+    // console.log('bird y', bird.y);
+    // console.log('bird', bird);
+    // console.log('pipes', pipes);
 
     for (let p of pipes) {
         // Проверяем столкновение с верхней трубой
-        console.log(p.y,bird.y);
+        // console.log(p.y,bird.y);
         if (bird.x + bird.w > p.x && bird.x - bird.w < p.x && bird.y + bird.h < p.y + pg) {
+            console.log('p',p);
+            console.log('bird',bird);
             console.log('Верхняя труба');
             return true;
         }
@@ -356,4 +358,7 @@ window.onload = function() {
     var curwidth = window.innerWidth;
     var curheight = window.innerHeight
     setSize(curwidth, curheight);
+
+    document.getElementById('clientW').innerText = "Width:"+document.body.clientWidth;
+    document.getElementById('clientH').innerText = "Heigth"+document.body.clientHeight;
 };
