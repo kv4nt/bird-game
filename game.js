@@ -39,7 +39,8 @@ function checkCollisions(){
         //     continue;
         // }
         // Проверяем столкновение с верхней трубой
-        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
+        // if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
+        if(bird.x>p.x && bird.x<p.x+pw && bird.y<p.y) {
             console.log('v1',bird.x+bird.r>p.x);
             console.log('v1',bird.x+bird.r,p.x);
             console.log('v2',bird.x-bird.r<p.x+pw);
@@ -71,8 +72,8 @@ function update(){
 
     bird.s+=bird.g;
     bird.y+=bird.s;
-    birdXEl.innerText = bird.x;
-    birdYEl.innerText = bird.y;
+    birdXEl.innerText = 'X: '+bird.x;
+    birdYEl.innerText = 'Y: '+bird.y;
 
     if(Date.now()%pipeGap<=50)createPipe();
     //if(Date.now()%pipeGap===0)createPipe();
