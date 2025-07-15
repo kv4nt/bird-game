@@ -2,7 +2,7 @@ const canvas=document.getElementById('gameCanvas');
 const ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('startScreen');
 const scoreEl=document.getElementById('score');
-const birdXEl=document.getElementById('birdX');
+const birdYEl=document.getElementById('birdY');
 const birdSEl=document.getElementById('birdS');
 const birdGEl=document.getElementById('birdG');
 
@@ -73,13 +73,16 @@ function update(){
 
     bird.s+=bird.g;
     bird.y+=bird.s;
-    birdXEl.innerText = 'X: '+bird.x;
+    birdYEl.innerText = 'Y: '+bird.y;
     birdSEl.innerText = 'S: '+bird.s;
     birdGEl.innerText = 'G: '+bird.g;
 
     //if(Date.now()%pipeGap<=50)createPipe();
     //if(Date.now()%pipeGap===0)createPipe();
-    setInterval(createPipe,2500*60);
+    //setInterval(createPipe,2500*60);
+    if(pipes.length <= 3) {
+        createPipe();
+    }
 
     for(let p of pipes){
         p.x-=ps;
