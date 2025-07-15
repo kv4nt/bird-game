@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <style>
-        canvas{display:block;margin:0 auto;background:#75bbfd}
-        .start-screen{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:24px;text-align:center}
-        .score-screen{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);color:black;font-size:24px;text-align:center}
-        #score{position:absolute;top:10px;left:10px;color:blue;font-size:20px}
-        #birdY{position:absolute;top:30px;left:10px;color:red;font-size:20px}
-        #birdS{position:absolute;top:50px;left:10px;color:brown;font-size:20px}
-        #birdG{position:absolute;top:70px;left:10px;color:yellow;font-size:20px}
-        #clientH{position:absolute;top:90px;left:10px;color:blue;font-size:20px}
-        #clientW{position:absolute;top:110px;left:10px;color:blue;font-size:20px}
-        /* Disable text selection for the entire body */
-        body {
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* IE 10+ */
-            user-select: none;         /* Standard syntax */
-        }
+<html lang="en">
 
-        /* Alternatively, apply to specific game elements */
-        #gameCanvas {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128903927-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128903927-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <title>Flappy Bird</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Igor Rozani">
+	<meta name="description" content="Flappy Bird in Phaser 3">
+	<meta name="keywords" content="flappy-bird, endless, phaser">
+	<meta http-equiv="content-language" content="en">
+	<meta name="robots" content="index, nofollow">
+	<meta property="og:locale" content="en">
+	<meta property="og:url" content="https://igorrozani.github.io/flappy-bird">
+	<meta property="og:title" content="Flappy Bird">
+	<meta property="og:description" content="Flappy Bird in Phaser 3">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="/img/favicon.png">
+	<meta name="twitter:url" content="https://igorrozani.github.io/flappy-bird">
+	<meta name="twitter:title" content="Flappy Bird">
+	<meta name="twitter:description" content="Flappy Bird in Phaser 3">
+	<meta name="twitter:image" content="/img/favicon.png">
+	<meta name="twitter:card" content="summary">
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="stylesheet" href="css/site.css">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser.js" type="text/javascript"></script>
+    <script src="js/game.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="c2canvasdiv">
-    <canvas id="gameCanvas" width="400" height="600"></canvas>
-</div>
-<div class="start-screen" id="startScreen">Нажмите на экран для старта</div>
-<div class="score-screen" id="scoreScreen"></div>
-<div id="score">Счет: 0</div>
-<div id="birdY"></div>
-<div id="birdS"></div>
-<div id="birdG"></div>
-<div id="clientH"></div>
-<div id="clientW"></div>
-<script src="game.js"></script>
 </body>
 </html>
