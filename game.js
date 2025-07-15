@@ -60,7 +60,7 @@ function checkCollisions() {
         }
         // Проверяем столкновение с верхней трубой
         // console.log(p.y,bird.y);
-        if ((pipes[0].x >= bird.x || pipes[0].x + pw >= bird.x || pipes[0].x + pw <= bird.x) && bird.y <= pipes[0].y) {
+        if ((pipes[0].x <= bird.x || pipes[0].x + pw >= bird.x || pipes[0].x + pw <= bird.x) && bird.y <= pipes[0].y) {
             console.log('p',p);
             console.log('bird',bird);
             console.log('Верхняя труба');
