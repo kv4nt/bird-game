@@ -8,7 +8,7 @@ const birdSEl = document.getElementById('birdS');
 const birdGEl = document.getElementById('birdG');
 
 // Параметры спрайта
-const SPRITE_W = 40, SPRITE_H = 40, FRAMES = 3, ANIM_SPEED = 2;
+const SPRITE_W = 40, SPRITE_H = 40, FRAMES = 4, ANIM_SPEED = 100;
 // Загружаем изображение птицы
 const birdImg = new Image();
 birdImg.src = 'bird.png';
