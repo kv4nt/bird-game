@@ -11,7 +11,7 @@ const birdGEl = document.getElementById('birdG');
 const SPRITE_W = 32, SPRITE_H = 32, FRAMES = 4, ANIM_SPEED = 120;
 // Загружаем изображение птицы
 const birdImg = new Image();
-birdImg.src = 'bird.png';
+birdImg.src = 'bat.gif';
 
 let isGameStarted = false, score = 0, currentFrame = 0, lastAnimTime = 0;
 // Изменяем параметры птицы под размер изображения
@@ -80,7 +80,7 @@ function update() {
     birdYEl.innerText = 'Y: ' + bird.y;
     birdSEl.innerText = 'S: ' + bird.s;
     birdGEl.innerText = 'G: ' + bird.g;
-    updateAnimation();
+    //updateAnimation();
 
     for (let p of pipes) {
         p.x -= ps;
@@ -98,7 +98,7 @@ function update() {
     if (bird.y + bird.h / 2 > canvas.height || checkCollisions()) {
         endGame();
     }
-    requestAnimationFrame(update);
+    //requestAnimationFrame(update);
 }
 
 function endGame() {
