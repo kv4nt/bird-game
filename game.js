@@ -41,7 +41,7 @@ function checkCollisions(){
         // }
         // Проверяем столкновение с верхней трубой
         // if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
-        if(bird.x>p.x && bird.x<p.x+pw && bird.y<p.y) {
+        if(bird.x>p.x && bird.x<p.x && bird.y<p.y) {
             console.log('v1',bird.x+bird.r>p.x);
             console.log('v1',bird.x+bird.r,p.x);
             console.log('v2',bird.x-bird.r<p.x+pw);
