@@ -78,7 +78,8 @@ function update(){
     birdGEl.innerText = 'G: '+bird.g;
 
     //if(Date.now()%pipeGap<=50)createPipe();
-    if(Date.now()%pipeGap===0)createPipe();
+    //if(Date.now()%pipeGap===0)createPipe();
+    setInterval(createPipe,2500);
 
     for(let p of pipes){
         p.x-=ps;
