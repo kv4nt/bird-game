@@ -1,124 +1,97 @@
-const canvas=document.getElementById('gameCanvas');
-const ctx=canvas.getContext('2d');
-const startScreen=document.getElementById('startScreen');
-const scoreScreen=document.getElementById('scoreScreen');
-const scoreEl=document.getElementById('score');
-const birdYEl=document.getElementById('birdY');
-const birdSEl=document.getElementById('birdS');
-const birdGEl=document.getElementById('birdG');
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const startScreen = document.getElementById('startScreen');
+const scoreScreen = document.getElementById('scoreScreen');
+const scoreEl = document.getElementById('score');
+const birdYEl = document.getElementById('birdY');
+const birdSEl = document.getElementById('birdS');
+const birdGEl = document.getElementById('birdG');
 
-let isGameStarted=false,score=0;
-const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
-let pipes=[];
-const pw=80,pg=250,ps=2,pipeGap=2500;
+// Загружаем изображение птицы
+const birdImg = new Image();
+birdImg.src = 'bird.png';
 
-function createPipe(){
-    //const y=Math.random()*(canvas.height-pg-2*pw)+pw;
-    const y=Math.random()*300;
-    pipes.push({x:canvas.width,y,passed:false});
+let isGameStarted = false, score = 0;
+// Изменяем параметры птицы под размер изображения
+const bird = { x: 100, y: 200, w: 30, h: 25, g: 0.4, s: 0, jp: -8 };
+let pipes = [];
+const pw = 80, pg = 250, ps = 2, pipeGap = 2500;
+
+function createPipe() {
+    const y = Math.random() * 300;
+    pipes.push({ x: canvas.width, y, passed: false });
 }
 
-function drawPipe(p){
-    ctx.fillStyle='#009900';
-    ctx.fillRect(p.x,0,pw,p.y-pw);
-    ctx.fillRect(p.x,p.y+pg,pw,canvas.height-p.y-pg);
+function drawPipe(p) {
+    ctx.fillStyle = '#009900';
+    ctx.fillRect(p.x, 0, pw, p.y - pw);
+    ctx.fillRect(p.x, p.y + pg, pw, canvas.height - p.y - pg);
 }
 
-function drawBird(){
-    ctx.beginPath();
-    ctx.arc(bird.x,bird.y,bird.r,0,Math.PI*2);
-    ctx.fillStyle='#ff6600';
-    ctx.fill();
+// Новая функция отрисовки птицы
+function drawBird() {
+    ctx.drawImage(birdImg, bird.x - bird.w / 2, bird.y - bird.h / 2, bird.w, bird.h);
 }
 
-function checkCollisions(){
-    console.log('bird x',bird.x);
-    console.log('bird y',bird.y);
-    console.log('bird',bird);
-    console.log('pipes',pipes);
-    for(let p of pipes){
-        // if(p.passed) {
-        //     continue;
-        // }
+function checkCollisions() {
+    console.log('bird x', bird.x);
+    console.log('bird y', bird.y);
+    console.log('bird', bird);
+    console.log('pipes', pipes);
+
+    for (let p of pipes) {
         // Проверяем столкновение с верхней трубой
-        // if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
-        if(bird.x>p.x && bird.x<p.x && bird.y<p.y) {
-            console.log('v1',bird.x+bird.r>p.x);
-            console.log('v1',bird.x+bird.r,p.x);
-            console.log('v2',bird.x-bird.r<p.x+pw);
-            console.log('v2',bird.x-bird.r,p.x+pw);
-            console.log('v3',bird.y+bird.r<p.y);
-            console.log('v3',bird.y+bird.r,p.y);
-        console.log('Верхняя труба');
+        if (bird.x + bird.w / 2 > p.x && bird.x - bird.w / 2 < p.x + pw && bird.y - bird.h / 2 < p.y) {
+            console.log('Верхняя труба');
             return true;
         }
         // Проверяем столкновение с нижней трубой
-        if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y+bird.r>p.y+pg) {
-            console.log('v1',bird.x+bird.r>p.x);
-            console.log('v1',bird.x+bird.r,p.x);
-            console.log('v2',bird.x-bird.r<p.x+pw);
-            console.log('v2',bird.x-bird.r,p.x+pw);
-            console.log('v3',bird.y+bird.r>p.y+pg);
-            console.log('v3',bird.y+bird.r,p.y+pg);
+        if (bird.x + bird.w / 2 > p.x && bird.x - bird.w / 2 < p.x + pw && bird.y + bird.h / 2 > p.y + pg) {
             console.log('Нижняя труба');
             return true;
         }
-        //return false;
     }
     return false;
 }
 
-function update(){
-    if(!isGameStarted)return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+function update() {
+    if (!isGameStarted) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    bird.s+=bird.g;
-    bird.y+=bird.s;
-    birdYEl.innerText = 'Y: '+bird.y;
-    birdSEl.innerText = 'S: '+bird.s;
-    birdGEl.innerText = 'G: '+bird.g;
+    bird.s += bird.g;
+    bird.y += bird.s;
+    birdYEl.innerText = 'Y: ' + bird.y;
+    birdSEl.innerText = 'S: ' + bird.s;
+    birdGEl.innerText = 'G: ' + bird.g;
 
-    //if(Date.now()%pipeGap<=50)createPipe();
-    //if(Date.now()%pipeGap===0)createPipe();
-    //setInterval(createPipe,2500*60);
-    // if(pipes.length <= 2) {
-    //     createPipe();
-    // }
-
-    for(let p of pipes){
-        p.x-=ps;
+    for (let p of pipes) {
+        p.x -= ps;
         drawPipe(p);
-        if(!p.passed && p.x+pw<bird.x){
+        if (!p.passed && p.x + pw < bird.x) {
             score++;
-            p.passed=true;
-            scoreEl.innerText='Счет: '+score;
+            p.passed = true;
+            scoreEl.innerText = 'Счет: ' + score;
         }
     }
 
-    pipes=pipes.filter(p=>p.x>-pw);
+    pipes = pipes.filter(p => p.x > -pw);
     drawBird();
 
-    if(bird.y+bird.r>canvas.height || checkCollisions()){
+    if (bird.y + bird.h / 2 > canvas.height || checkCollisions()) {
         endGame();
     }
     requestAnimationFrame(update);
 }
 
-function endGame(){
+function endGame() {
     console.log('Игра окончена! Ваш счёт: ' + score);
-    //location.reload();
     isGameStarted = false;
     startScreen.style.display = 'block';
-    scoreScreen.innerText = 'Вы заработали '+score+' очков!';
+    scoreScreen.innerText = 'Вы заработали ' + score + ' очков!';
     scoreScreen.style.display = 'block';
     bird.s = 0;
     bird.y = 200;
-    pipes=[];
-    //location.reload();
-
-
-    //pipes = [];
-    //update();
+    pipes = [];
 }
 
 document.addEventListener('click',()=>{
