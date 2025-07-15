@@ -365,11 +365,11 @@ window.onload = function() {
     // Get the canvas and context
     var canvas = document.getElementById("gameCanvas");
     var context = canvas.getContext("2d");
-    if (canvas.width < document.body.clientWidth) {
-        canvas.width = document.body.clientWidth;
+    if (canvas.width < window.innerWidth) {
+        canvas.width = window.innerWidth;
     }
-    if (canvas.height < document.body.clientHeight) {
-        canvas.height = document.body.clientHeight;
+    if (canvas.height < window.innerHeight) {
+        canvas.height = window.innerHeight;
     }
     var curwidth = window.innerWidth;
     var curheight = window.innerHeight
