@@ -6,7 +6,7 @@ const scoreEl=document.getElementById('score');
 let isGameStarted=false,score=0;
 const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
 let pipes=[];
-const pw=80,pg=250,ps=2,pipeGap=3000;
+const pw=80,pg=250,ps=2,pipeGap=10000;
 
 function createPipe(){
     //const y=Math.random()*(canvas.height-pg-2*pw)+pw;
