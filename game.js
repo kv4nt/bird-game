@@ -75,8 +75,8 @@ function update(){
     birdXEl.innerText = 'X: '+bird.x;
     birdYEl.innerText = 'Y: '+bird.y;
 
-    if(Date.now()%pipeGap<=50)createPipe();
-    //if(Date.now()%pipeGap===0)createPipe();
+    //if(Date.now()%pipeGap<=50)createPipe();
+    if(Date.now()%pipeGap===0)createPipe();
 
     for(let p of pipes){
         p.x-=ps;
