@@ -70,8 +70,8 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
 
-    //if(Date.now()%pipeGap<=100)createPipe();
-    if(Date.now()%pipeGap===0)createPipe();
+    if(Date.now()%pipeGap<=50)createPipe();
+    //if(Date.now()%pipeGap===0)createPipe();
 
     for(let p of pipes){
         p.x-=ps;
