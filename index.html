@@ -11,6 +11,21 @@
         #birdG{position:absolute;top:70px;left:10px;color:yellow;font-size:20px}
         #clientH{position:absolute;top:90px;left:10px;color:blue;font-size:20px}
         #clientW{position:absolute;top:110px;left:10px;color:blue;font-size:20px}
+        /* Disable text selection for the entire body */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE 10+ */
+            user-select: none;         /* Standard syntax */
+        }
+
+        /* Alternatively, apply to specific game elements */
+        #gameCanvas {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
