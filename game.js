@@ -6,7 +6,7 @@ const scoreEl=document.getElementById('score');
 let isGameStarted=false,score=0;
 const bird={x:100,y:200,r:10,g:0.4,s:0,jp:-8};
 let pipes=[];
-const pw=80,pg=250,ps=2,pipeGap=10000;
+const pw=80,pg=250,ps=2,pipeGap=2500;
 
 function createPipe(){
     //const y=Math.random()*(canvas.height-pg-2*pw)+pw;
@@ -70,7 +70,8 @@ function update(){
     bird.s+=bird.g;
     bird.y+=bird.s;
 
-    if(Date.now()%pipeGap<=100)createPipe();
+    //if(Date.now()%pipeGap<=100)createPipe();
+    if(Date.now()%pipeGap===0)createPipe();
 
     for(let p of pipes){
         p.x-=ps;
