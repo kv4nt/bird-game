@@ -375,6 +375,6 @@ window.onload = function() {
     var curheight = window.innerHeight
     setSize(curwidth, curheight);
 
-    document.getElementById('clientW').innerText = "Width:"+document.body.clientWidth;
-    document.getElementById('clientH').innerText = "Heigth"+document.body.clientHeight;
+    document.getElementById('clientW').innerText = "Width:"+window.innerWidth;
+    document.getElementById('clientH').innerText = "Heigth:"+window.innerHeight;
 };
