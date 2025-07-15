@@ -56,12 +56,18 @@ function checkCollisions() {
     for (let p of pipes) {
         // Проверяем столкновение с верхней трубой
         // console.log(p.y,bird.y);
-        if (bird.x + bird.w > p.x && bird.x - bird.w < p.x && bird.y + bird.h < p.y + pg) {
+        if (bird.x >= p.x && bird.y <= p.y) {
             console.log('p',p);
             console.log('bird',bird);
             console.log('Верхняя труба');
             return true;
         }
+        // if (bird.x + bird.w > p.x && bird.x - bird.w < p.x && bird.y + bird.h < p.y + pg) {
+        //     console.log('p',p);
+        //     console.log('bird',bird);
+        //     console.log('Верхняя труба');
+        //     return true;
+        // }
         // Проверяем столкновение с нижней трубой
         if (bird.x + bird.w / 2 > p.x && bird.x - bird.w / 2 < p.x + pw && bird.y + bird.h / 2 > p.y + pg) {
             console.log('Нижняя труба');
