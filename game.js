@@ -80,9 +80,9 @@ function update(){
     //if(Date.now()%pipeGap<=50)createPipe();
     //if(Date.now()%pipeGap===0)createPipe();
     //setInterval(createPipe,2500*60);
-    if(pipes.length <= 2) {
-        createPipe();
-    }
+    // if(pipes.length <= 2) {
+    //     createPipe();
+    // }
 
     for(let p of pipes){
         p.x-=ps;
@@ -110,6 +110,7 @@ function endGame(){
     startScreen.style.display = 'block';
     bird.s = 0;
     bird.y = 200;
+    location.reload();
     //pipes = [];
     //update();
 }
@@ -121,6 +122,7 @@ document.addEventListener('click',()=>{
         bird.s=0;
         bird.y=200;
         update();
+        setInterval(createPipe,2500);
     }else{
         bird.s=bird.jp;
     }
