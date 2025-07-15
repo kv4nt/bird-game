@@ -79,7 +79,7 @@ function update(){
 
     //if(Date.now()%pipeGap<=50)createPipe();
     //if(Date.now()%pipeGap===0)createPipe();
-    setInterval(createPipe,2500);
+    setInterval(createPipe,2500*60);
 
     for(let p of pipes){
         p.x-=ps;
