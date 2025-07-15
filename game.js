@@ -55,7 +55,7 @@ function checkCollisions() {
 
     for (let p of pipes) {
         // Проверяем столкновение с верхней трубой
-        if (bird.x + bird.w / 2 > p.x && bird.x - bird.w / 2 < p.x + pw && bird.y - bird.h / 2 < p.y) {
+        if (bird.x > p.x && bird.x < p.x && bird.y < p.y) {
             console.log('Верхняя труба');
             return true;
         }
