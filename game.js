@@ -33,6 +33,12 @@ function checkCollisions(){
     for(let p of pipes){
         // Проверяем столкновение с верхней трубой
         if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+pw && bird.y-bird.r<p.y) {
+            console.log('v1',bird.x+bird.r>p.x);
+            console.log('v1',bird.x+bird.r,p.x);
+            console.log('v2',bird.x-bird.r<p.x+pw);
+            console.log('v2',bird.x-bird.r,p.x+pw);
+            console.log('v3',bird.y+bird.r>p.y);
+            console.log('v3',bird.y+bird.r,p.y);
         console.log('Верхняя труба');
             return true;
         }
