@@ -17,7 +17,7 @@ function createPipe(){
 function drawPipe(p){
     ctx.fillStyle='#009900';
     ctx.fillRect(p.x,0,pw,p.y-pw);
-    ctx.fillRect(p.x,p.y+pg,pw,canvas.height-p.y-pg);
+    //ctx.fillRect(p.x,p.y+pg,pw,canvas.height-p.y-pg);
 }
 
 function drawBird(){
