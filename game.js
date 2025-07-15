@@ -100,7 +100,7 @@ function update() {
         }
     }
 
-    pipes = pipes.filter(p => p.x > -pw);
+    pipes = pipes.filter(p => p.x > bird.x);
     drawBird();
 
     if (bird.y + bird.h / 2 > canvas.height || checkCollisions()) {
