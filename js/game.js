@@ -453,7 +453,7 @@ function makePipes(scene) {
     const pipeTop = pipesGroup.create(288, pipeTopY, currentPipe.top)
     pipeTop.body.allowGravity = false
 
-    const pipeBottom = pipesGroup.create(288, pipeTopY + 420, currentPipe.bottom)
+    const pipeBottom = pipesGroup.create(288, pipeTopY + 520, currentPipe.bottom)
     pipeBottom.body.allowGravity = false
 }
 
