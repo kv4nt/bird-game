@@ -49,7 +49,8 @@ const assets = {
         width: 144,
         background: {
             day: 'background-day',
-            night: 'background-night'
+            night: 'background-night',
+            hell: 'background-hell'
         },
         ground: 'ground',
         gameOver: 'game-over',
@@ -157,6 +158,11 @@ let backgroundDay
  */
 let backgroundNight
 /**
+ * Hell background component
+ * @type {object}
+ */
+let backgroundHell
+/**
  * Ground component.
  * @type {object}
  */
@@ -201,6 +207,7 @@ function preload() {
     // Backgrounds and ground
     this.load.image(assets.scene.background.day, 'assets/background-day.png')
     this.load.image(assets.scene.background.night, 'assets/background-night.png')
+    this.load.image(assets.scene.background.hell,'assest/background-hell.png')
     this.load.spritesheet(assets.scene.ground, 'assets/ground-sprite.png', {
         frameWidth: 336,
         frameHeight: 112
@@ -255,6 +262,9 @@ function create() {
     backgroundNight = this.add.image(assets.scene.width, 256, assets.scene.background.night).setInteractive()
     backgroundNight.visible = false
     backgroundNight.on('pointerdown', moveBird)
+    backgroundHell = this.add.image(assets.scene.width, 256, assets.scene.background.hell).setInteractive()
+    backgroundHell.visible = false
+    backgroundHell.on('pointerdown', moveBird)
 
     gapsGroup = this.physics.add.group()
     pipesGroup = this.physics.add.group()
@@ -423,9 +433,13 @@ function updateScore(_, gap) {
     score++
     gap.destroy()
 
+    var rand = Math.random(2);
     if (score % 10 == 0) {
-        backgroundDay.visible = !backgroundDay.visible
-        backgroundNight.visible = !backgroundNight.visible
+        // backgroundDay.visible = !backgroundDay.visible
+        // backgroundNight.visible = !backgroundNight.visible
+        // backgroundHell.visible = !backgroundHell.visible
+
+        getRandomScene();
 
         if (currentPipe === assets.obstacle.pipe.green)
             currentPipe = assets.obstacle.pipe.red
@@ -488,6 +502,27 @@ function getRandomBird() {
     }
 }
 
+
+function getRandomScene() {
+    switch (Phaser.Math.Between(0, 2)) {
+        case 0:
+            backgroundDay.visible = true
+            backgroundNight.visible = false
+            backgroundHell.visible = false
+            return true;
+        case 1:
+            backgroundDay.visible = false
+            backgroundNight.visible = true
+            backgroundHell.visible = false
+            return true;
+        case 2:
+        default:
+            backgroundDay.visible = false
+            backgroundNight.visible = false
+            backgroundHell.visible = true
+            return true;
+    }
+}
 /**
  * Get the animation name from the bird.
  * @param {string} birdColor - Game bird color asset.
@@ -555,6 +590,7 @@ function prepareGame(scene) {
     gameOver = false
     backgroundDay.visible = true
     backgroundNight.visible = false
+    backgroundHell.visible = false
     messageInitial.visible = true
 
     birdName = getRandomBird()
