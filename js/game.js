@@ -207,7 +207,7 @@ function preload() {
     // Backgrounds and ground
     this.load.image(assets.scene.background.day, 'assets/background-day.png')
     this.load.image(assets.scene.background.night, 'assets/background-night.png')
-    this.load.image(assets.scene.background.hell,'assest/background-hell.png')
+    this.load.image(assets.scene.background.hell,'assets/background-hell.png')
     this.load.spritesheet(assets.scene.ground, 'assets/ground-sprite.png', {
         frameWidth: 336,
         frameHeight: 112
