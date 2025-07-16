@@ -445,7 +445,7 @@ function makePipes(scene) {
 
     const pipeTopY = Phaser.Math.Between(-120, 120)
 
-    const gap = scene.add.line(288, pipeTopY + 210, 0, 0, 0, 198)
+    const gap = scene.add.line(288, pipeTopY + 260, 0, 0, 0, 198)
     gapsGroup.add(gap)
     gap.body.allowGravity = false
     gap.visible = false
@@ -453,7 +453,7 @@ function makePipes(scene) {
     const pipeTop = pipesGroup.create(288, pipeTopY, currentPipe.top)
     pipeTop.body.allowGravity = false
 
-    const pipeBottom = pipesGroup.create(288, pipeTopY + 520, currentPipe.bottom)
+    const pipeBottom = pipesGroup.create(288, pipeTopY + 470, currentPipe.bottom)
     pipeBottom.body.allowGravity = false
 }
 
