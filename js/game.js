@@ -276,7 +276,12 @@ function preload() {
     //audio
     this.load.audio('dieSound', 'sound/die.wav');
     this.load.audio('fartSound', 'sound/fart.wav');
+    this.load.audio('fartSound1', 'sound/fart1.wav');
+    this.load.audio('fartSound2', 'sound/fart2.mp3');
+    this.load.audio('fartSound3', 'sound/fart3.wav');
+    this.load.audio('fartSoundTriple', 'sound/fart-triple.wav');
     this.load.audio('bgSound', 'sound/bg.wav');
+    this.load.audio('bgSoundRetro', 'sound/bg-retro.wav');
 }
 
 /**
@@ -323,7 +328,12 @@ function create() {
 
     dieSound = this.sound.add('dieSound');
     fartSound = this.sound.add('fartSound');
+    fartSound1 = this.sound.add('fartSound1');
+    fartSound2 = this.sound.add('fartSound2');
+    fartSound3 = this.sound.add('fartSound3');
+    fartSoundTriple = this.sound.add('fartSoundTraple');
     bgSound = this.sound.add('bgSound',{loop:true});
+    bgSoundRetro = this.sound.add('bgSoundRetro',{loop:true,volume:0.5});
 
     upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
@@ -470,8 +480,8 @@ function hitBird(player) {
     gameOverBanner.visible = true
     restartButton.visible = true
     saveScorev(score);
-    bgSound.stop();
-    dieSound.play();
+    bgSoundRetro.stop();
+    fartSoundTriple.play();
 }
 
 /**
@@ -531,7 +541,11 @@ function moveBird() {
     if (!gameStarted)
         startGame(game.scene.scenes[0])
 
-    fartSound.play();
+    var fartSounds = ['fartSound1','fartSound2','fartSound3'];
+    var rand = Phaser.Math.Between(0, 2);
+    var el = eval(fartSounds[rand]);
+
+    el.play();
     player.setVelocityY(-400)
     player.angle = -15
     framesMoveUp = 5
@@ -689,7 +703,7 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
-    bgSound.play();
+    bgSoundRetro.play();
 }
 
 async function saveScorev(score) {
