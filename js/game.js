@@ -646,6 +646,25 @@ function saveScorev2(score) {
     });
 }
 
+function saveScorev3(score) {
+    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
+    console.log('data',data);
+    fetch("https://parsersite.ru/api/add", {
+        method: "PUT",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(res => {
+        console.log("Request complete! response:", res);
+    });
+}
+
+function saveScorev4(score) {
+    const URL = 'https://parsersite.ru/api/add?user_id='+Telegram.WebApp.initDataUnsafe.user.id+'&user_name='+Telegram.WebApp.initDataUnsafe.user.username+'&score='+score;
+    let response = await fetch(URL)
+    let data = await response.json()
+    console.log(data);
+}
+
 async function getTopScores () {
     const URL = 'https://parsersite.ru/api/get-top-ten'
     let response = await fetch(URL)
