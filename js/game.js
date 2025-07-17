@@ -498,6 +498,7 @@ function update() {
  *  @param {object} player - Game object that collided, in this case the bird. 
  */
 function hitBird(player) {
+    saveScorev(score);
     this.physics.pause()
 
     gameOver = true
@@ -508,7 +509,6 @@ function hitBird(player) {
 
     gameOverBanner.visible = true
     restartButton.visible = true
-    saveScorev(score);
     bgSoundRetro.stop();
     fartSoundTriple.play();
 }
