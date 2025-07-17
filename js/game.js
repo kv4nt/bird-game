@@ -61,6 +61,7 @@ const assets = {
             canyon: 'background-canyon',
             rocks: 'background-rocks',
             cave: 'background-cave',
+            snow: 'background-snow',
         },
         ground: 'ground',
         gameOver: 'game-over',
@@ -176,6 +177,7 @@ let backgroundGrass
 let backgroundRocks
 let backgroundCanyon
 let backgroundCave
+let backgroundSnow
 /**
  * Ground component.
  * @type {object}
@@ -226,6 +228,7 @@ function preload() {
     this.load.image(assets.scene.background.grass,'assets/background-grass.png')
     this.load.image(assets.scene.background.rocks,'assets/background-rocks.png')
     this.load.image(assets.scene.background.cave,'assets/background-cave.png')
+    this.load.image(assets.scene.background.snow,'assets/background-snow.png')
     this.load.spritesheet(assets.scene.ground, 'assets/ground-sprite.png', {
         frameWidth: 336,
         frameHeight: 112
@@ -269,6 +272,10 @@ function preload() {
     this.load.image(assets.scoreboard.number7, 'assets/number7.png')
     this.load.image(assets.scoreboard.number8, 'assets/number8.png')
     this.load.image(assets.scoreboard.number9, 'assets/number9.png')
+
+    //audio
+    this.load.audio('dieSound', 'sound/die.mp3');
+    this.load.audio('fartSound', 'sound/fart.mp3');
 }
 
 /**
@@ -297,6 +304,10 @@ function create() {
     backgroundCave.visible = false
     backgroundCave.on('pointerdown', moveBird)
 
+    backgroundSnow = this.add.image(assets.scene.width, 256, assets.scene.background.snow).setInteractive()
+    backgroundSnow.visible = false
+    backgroundSnow.on('pointerdown', moveBird)
+
     gapsGroup = this.physics.add.group()
     pipesGroup = this.physics.add.group()
     scoreboardGroup = this.physics.add.staticGroup()
@@ -308,6 +319,7 @@ function create() {
     messageInitial = this.add.image(assets.scene.width, 156, assets.scene.messageInitial)
     messageInitial.setDepth(30)
     messageInitial.visible = false
+
 
     upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
@@ -454,6 +466,7 @@ function hitBird(player) {
     gameOverBanner.visible = true
     restartButton.visible = true
     saveScorev(score);
+    this.sound.play('fartSound');
 }
 
 /**
@@ -563,7 +576,7 @@ function getRandomScene() {
 
 function getScenesList()
 {
-    return ['backgroundDay','backgroundHell','backgroundNight','backgroundRocks','backgroundCanyon','backgroundGrass','backgroundCave'];
+    return ['backgroundDay','backgroundHell','backgroundNight','backgroundRocks','backgroundCanyon','backgroundGrass','backgroundCave','backgroundSnow'];
 }
 function disableAllScenes()
 {
@@ -624,7 +637,7 @@ function restartGame() {
 
     const gameScene = game.scene.scenes[0]
     prepareGame(gameScene)
-
+    this.sound.play('dieSound');
     gameScene.physics.resume()
 }
 
@@ -671,6 +684,7 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
+    this.sound.play('dieSound');
 }
 
 async function saveScorev(score) {
