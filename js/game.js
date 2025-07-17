@@ -634,6 +634,18 @@ function saveScore(score) {
     });
 }
 
+function saveScorev2(score) {
+    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
+    console.log('data',data);
+    fetch("https://parsersite.ru/api/add", {
+        method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(res => {
+        console.log("Request complete! response:", res);
+    });
+}
+
 async function getTopScores () {
     const URL = 'https://parsersite.ru/api/get-top-ten'
     let response = await fetch(URL)
