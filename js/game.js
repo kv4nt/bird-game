@@ -320,6 +320,8 @@ function create() {
     messageInitial.setDepth(30)
     messageInitial.visible = false
 
+    dieSound = this.sound.add('dieSound');
+    fartSound = this.sound.add('fartSound');
 
     upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
@@ -466,7 +468,7 @@ function hitBird(player) {
     gameOverBanner.visible = true
     restartButton.visible = true
     saveScorev(score);
-    this.sound.play('fartSound');
+    fartSound.play();
 }
 
 /**
@@ -637,7 +639,7 @@ function restartGame() {
 
     const gameScene = game.scene.scenes[0]
     prepareGame(gameScene)
-    this.sound.play('dieSound');
+    dieSound.play();
     gameScene.physics.resume()
 }
 
@@ -684,7 +686,7 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
-    this.sound.play('dieSound');
+    dieSound.play();
 }
 
 async function saveScorev(score) {
