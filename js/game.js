@@ -635,7 +635,7 @@ function saveScore(score) {
 }
 
 async function getTopScores () {
-    const URL = 'http://parsersite.ru/api/get-top-ten'
+    const URL = 'https://parsersite.ru/api/get-top-ten'
     let response = await fetch(URL)
     let data = await response.json()
     console.log(data);
