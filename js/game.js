@@ -453,6 +453,12 @@ function create() {
     restartButton.on('pointerdown', restartGame)
     restartButton.setDepth(20)
     restartButton.visible = false
+
+
+    recordsButton = this.add.image(assets.scene.width, 360, assets.scene.restart).setInteractive()
+    recordsButton.on('pointerdown', restartGame)
+    recordsButton.setDepth(20)
+    recordsButton.visible = false
 }
 
 /**
@@ -512,6 +518,7 @@ function hitBird(player) {
 
     gameOverBanner.visible = true
     restartButton.visible = true
+    recordsButton.visible = true
     bgSoundRetro.stop();
     fartSoundTriple.play();
 }
@@ -686,6 +693,7 @@ function restartGame() {
     player.destroy()
     gameOverBanner.visible = false
     restartButton.visible = false
+    recordsButton.visible = false
 
     const gameScene = game.scene.scenes[0]
     prepareGame(gameScene)
