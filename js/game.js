@@ -459,19 +459,21 @@ function create() {
 
 
     recordsButton = this.add.image(assets.scene.width, 360, assets.scene.leaderboard).setInteractive()
-    recordsButton.on('pointerdown', restartGame)
+    recordsButton.on('pointerdown', goToScores)
     recordsButton.setDepth(20)
     recordsButton.visible = false
+}
+
+function goToScores()
+{
+    window.location.pathname = '/bird-game/scores.html';
+    return;
 }
 
 /**
  *  Update the scene frame by frame, responsible for move and rotate the bird and to create and move the pipes.
  */
 function update() {
-    if (leaderboard) {
-         window.location.pathname = '/bird-game/scores.html';
-         return;
-    }
     if (gameOver || !gameStarted)
         return
 
@@ -529,10 +531,6 @@ function hitBird(player) {
     recordsButton.visible = true
     bgSoundRetro.stop();
     fartSoundTriple.play();
-    if (leaderboard) {
-        window.location.pathname = '/bird-game/scores.html';
-        return;
-    }
 }
 
 /**
@@ -586,10 +584,6 @@ function makePipes(scene) {
  * Move the bird in the screen.
  */
 function moveBird() {
-    if (leaderboard) {
-        window.location.pathname = '/bird-game/scores.html';
-        return;
-    }
     if (gameOver)
         return
 
