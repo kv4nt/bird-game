@@ -279,6 +279,11 @@ function preload() {
     this.load.audio('fartSound1', 'sound/fart1.wav');
     this.load.audio('fartSound2', 'sound/fart2.mp3');
     this.load.audio('fartSound3', 'sound/fart3.wav');
+    this.load.audio('fartSound4', 'sound/fart4.wav');
+    this.load.audio('fartSound5', 'sound/fart5.wav');
+    this.load.audio('fartSound6', 'sound/fart6.wav');
+    this.load.audio('fartSound7', 'sound/fart7.wav');
+    this.load.audio('fartSound8', 'sound/fart4.mp3');
     this.load.audio('fartSoundTriple', 'sound/fart-triple.wav');
     this.load.audio('bgSound', 'sound/bg.wav');
     this.load.audio('bgSoundRetro', 'sound/bg-retro.wav');
@@ -331,6 +336,11 @@ function create() {
     fartSound1 = this.sound.add('fartSound1');
     fartSound2 = this.sound.add('fartSound2');
     fartSound3 = this.sound.add('fartSound3');
+    fartSound4 = this.sound.add('fartSound4');
+    fartSound5 = this.sound.add('fartSound5');
+    fartSound6 = this.sound.add('fartSound6');
+    fartSound7 = this.sound.add('fartSound7');
+    fartSound8 = this.sound.add('fartSound8');
     fartSoundTriple = this.sound.add('fartSoundTriple');
     bgSound = this.sound.add('bgSound',{loop:true});
     bgSoundRetro = this.sound.add('bgSoundRetro',{loop:true,volume:0.1});
@@ -541,7 +551,7 @@ function moveBird() {
     if (!gameStarted)
         startGame(game.scene.scenes[0])
 
-    var fartSounds = ['fartSound1','fartSound2','fartSound3'];
+    var fartSounds = ['fartSound1','fartSound2','fartSound3','fartSound4','fartSound5','fartSound6','fartSound7','fartSound8'];
     var rand = Phaser.Math.Between(0, 2);
     var el = eval(fartSounds[rand]);
 
