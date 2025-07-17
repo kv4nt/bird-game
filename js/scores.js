@@ -8,16 +8,16 @@ class Highscore extends Phaser.Scene {
         this.scores = [];
     }
     preload() {
-        this.load.image('knighthawks', 'assets/fonts/knight3.png')
+        this.load.image('knighthawks', 'assets/fonts/fon3.png')
     }
     create() {
 
         var config = {
             image: 'knighthawks',
-            width: 31,
-            height: 25,
+            width: 16,
+            height: 16,
             chars: Phaser.GameObjects.RetroFont.TEXT_SET6,
-            charsPerRow: 10,
+            charsPerRow: 20,
             spacing: { x: 1, y: 1 }
         };
 
