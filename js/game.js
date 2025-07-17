@@ -422,6 +422,7 @@ function hitBird(player) {
 
     gameOverBanner.visible = true
     restartButton.visible = true
+    saveScore(score);
 }
 
 /**
@@ -621,8 +622,8 @@ function startGame(scene) {
     makePipes(scene)
 }
 
-function saveScore() {
-    let data = {user_id: "barium", user_name:"admin","score":12};
+function saveScore(score) {
+    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
 
     fetch("https://parsersite.ru/api/add", {
         method: "POST",
