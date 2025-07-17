@@ -77,8 +77,7 @@
 		type: 'GET',
 		url: 'https://parsersite.ru/api/get-top-ten',
 		success: function(data) {
-			array = JSON.parse(data);
-			array.forEach(function (index,val) {
+			data.forEach(function (index,val) {
 				console.log('index',index);
 				console.log('val',val);
 			})
