@@ -78,13 +78,22 @@
 		url: 'https://parsersite.ru/api/get-top-ten',
 		success: function(data) {
 			$('.table body').html('');
+			i=0;
 			data.forEach(function (val,index) {
-				$('.table body').append('<tr>' +
+				if(i==0) {
+					 cssClass = 'bg-warning';
+				} else if(i<4) {
+					cssClass = 'bg-success';
+				} else {
+					cssClass = 'bg-primary';
+				}
+				$('.table body').append('<tr class="'+cssClass+'">' +
 						'<td>'+index+'</td>' +
 						'<td>'+val.user_name+'</td>' +
 						'<td>'+val.score+'</td>' +
 						'<td>'+val.date+'</td>' +
 						'</tr>');
+				i++;
 			})
 		},
 		error: function(xhr) {
