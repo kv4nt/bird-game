@@ -131,6 +131,7 @@ let upButton
  * @type {object}
  */
 let restartButton
+let recordsButton
 /**
  * Game over banner component.
  * @type {object}
