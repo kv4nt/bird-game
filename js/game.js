@@ -287,6 +287,25 @@ function preload() {
     this.load.audio('fartSoundTriple', 'sound/fart-triple.wav');
     this.load.audio('bgSound', 'sound/bg.wav');
     this.load.audio('bgSoundRetro', 'sound/bg-retro.wav');
+
+
+    const progress = this.add.graphics();
+
+    this.load.on('progress', value =>
+    {
+
+        progress.clear();
+        progress.fillStyle(0xffffff, 1);
+        progress.fillRect(0, 270, 800 * value, 60);
+
+    });
+
+    this.load.on('complete', () =>
+    {
+
+        progress.destroy();
+
+    });
 }
 
 /**
