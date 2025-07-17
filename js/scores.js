@@ -7,9 +7,7 @@ class Highscore extends Phaser.Scene {
         });
         this.scores = [];
     }
-    preload() {
-        this.load.bitmapFont('arcade', 'assets/arcade.png', 'assets/arcade.xml');
-    }
+
     create() {
         this.add.bitmapText(100, 110, 'arcade', 'RANK  SCORE   NAME   DATE').setTint(0xffffff);
         for (let i = 1; i < 6; i++) {
