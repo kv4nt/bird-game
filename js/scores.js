@@ -8,27 +8,30 @@ class Highscore extends Phaser.Scene {
         this.scores = [];
     }
     preload() {
-        this.load.image('knighthawks', 'assets/fonts/fon3.png')
+        //this.load.image('knighthawks', 'assets/fonts/fon3.png')
     }
     create() {
 
-        var config = {
-            image: 'knighthawks',
-            width: 16,
-            height: 16,
-            chars: Phaser.GameObjects.RetroFont.TEXT_SET6,
-            charsPerRow: 20,
-            spacing: { x: 1, y: 1 }
-        };
+        // var config = {
+        //     image: 'knighthawks',
+        //     width: 16,
+        //     height: 16,
+        //     chars: Phaser.GameObjects.RetroFont.TEXT_SET6,
+        //     charsPerRow: 20,
+        //     spacing: { x: 1, y: 1 }
+        // };
 
-        this.cache.bitmapFont.add('knighthawks', Phaser.GameObjects.RetroFont.Parse(this, config));
+        // this.cache.bitmapFont.add('knighthawks', Phaser.GameObjects.RetroFont.Parse(this, config));
 
-        this.add.bitmapText(10, 20, 'knighthawks', 'RANK  SCORE  NAME  DATE').setTint(0xffffff);
+        //this.add.bitmapText(10, 20, 'knighthawks', 'RANK  SCORE  NAME  DATE').setTint(0xffffff);
+        this.add.text(10, 20, `RANK  SCORE  NAME  DATE`, { fontFamily: 'Arial', fontSize: 64, color: '#00ff00' });
         for (let i = 1; i < 11; i++) {
             if (scores[i-1]) {
-                this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}  ${scores[i-1].score}  ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
+                this.add.text(10, 50 * i, ` ${i}  ${scores[i-1].score}  ${scores[i-1].user_name}  ${scores[i-1].date}`, { fontFamily: 'Arial', fontSize: 64, color: '#00ff00' });
+                // this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}  ${scores[i-1].score}  ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
             } else {
-                this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}      0    ---`).setTint(0xffffff);
+                // this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}      0    ---`).setTint(0xffffff);
+                this.add.text(10, 50 * i, ` ${i}  -  -  -`, { fontFamily: 'Arial', fontSize: 64, color: '#00ff00' });
             }
         }
     }
