@@ -499,6 +499,8 @@ function update() {
  */
 function hitBird(player) {
     saveScorev(score);
+    console.log('score',score);
+
     this.physics.pause()
 
     gameOver = true
