@@ -624,7 +624,7 @@ function startGame(scene) {
 function saveScore() {
     let data = {user_id: "barium", user_name:"admin","score":12};
 
-    fetch("https://parsersite.ru:8202/api/add", {
+    fetch("https://parsersite.ru/api/add", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -634,7 +634,7 @@ function saveScore() {
 }
 
 async function getTopScores () {
-    const URL = 'http://parsersite.ru:8202/api/get-top-ten'
+    const URL = 'http://parsersite.ru/api/get-top-ten'
     let response = await fetch(URL)
     let data = await response.json()
     console.log(data);
