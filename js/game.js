@@ -471,7 +471,7 @@ function hitBird(player) {
     restartButton.visible = true
     saveScorev(score);
     bgSound.stop();
-    fartSound.play();
+    dieSound.play();
 }
 
 /**
@@ -643,7 +643,6 @@ function restartGame() {
 
     const gameScene = game.scene.scenes[0]
     prepareGame(gameScene)
-    dieSound.play();
     gameScene.physics.resume()
 }
 
@@ -690,7 +689,6 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
-    dieSound.play();
     bgSound.play();
 }
 
