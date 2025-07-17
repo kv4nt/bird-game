@@ -624,7 +624,7 @@ function startGame(scene) {
 
 function saveScore(score) {
     let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
-
+    console.log('data',data);
     fetch("https://parsersite.ru/api/add", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
