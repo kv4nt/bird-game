@@ -274,8 +274,8 @@ function preload() {
     this.load.image(assets.scoreboard.number9, 'assets/number9.png')
 
     //audio
-    this.load.audio('dieSound', 'sound/die.mp3');
-    this.load.audio('fartSound', 'sound/fart.mp3');
+    this.load.audio('dieSound', 'sound/die.wav');
+    this.load.audio('fartSound', 'sound/fart.wav');
 }
 
 /**
