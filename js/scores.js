@@ -24,11 +24,11 @@ class Highscore extends Phaser.Scene {
         this.cache.bitmapFont.add('knighthawks', Phaser.GameObjects.RetroFont.Parse(this, config));
 
         this.add.bitmapText(10, 20, 'knighthawks', 'RANK  SCORE   NAME   DATE').setTint(0xffffff);
-        for (let i = 1; i < 6; i++) {
+        for (let i = 1; i < 11; i++) {
             if (scores[i-1]) {
-                this.add.bitmapText(10, 60 + 50 * i, 'knighthawks', ` ${i}      ${scores[i-1].score}    ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
+                this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}      ${scores[i-1].score}    ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
             } else {
-                this.add.bitmapText(10, 60 + 50 * i, 'knighthawks', ` ${i}      0    ---`).setTint(0xffffff);
+                this.add.bitmapText(10, 50 * i, 'knighthawks', ` ${i}      0    ---`).setTint(0xffffff);
             }
         }
     }
