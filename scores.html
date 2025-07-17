@@ -37,7 +37,7 @@
 </head>
 <body>
 <div class="card">
-	<div class="card-header">
+	<div class="card-header text-center">
 		Top 10
 	</div>
 	<div class="card-body">
@@ -72,5 +72,21 @@
 		</table>
 	</div>
 </div>
+<script>
+	$.ajax({
+		type: 'GET',
+		url: 'https://parsersite.ru/api/get-top-ten',
+		success: function(data) {
+			array = JSON.parse(data);
+			array.forEach(function (index,val) {
+				console.log('index',index);
+				console.log('val',val);
+			})
+		},
+		error: function(xhr) {
+			console.log(xhr);
+		}
+	});
+</script>
 </body>
 </html>
