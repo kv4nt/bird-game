@@ -24,8 +24,8 @@ const configurations = {
     scale: {
         mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 576,
-        height: 1024,
+        // width: 576,
+        // height: 1024,
     },
 }
 
