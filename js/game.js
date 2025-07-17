@@ -333,7 +333,7 @@ function create() {
     fartSound3 = this.sound.add('fartSound3');
     fartSoundTriple = this.sound.add('fartSoundTriple');
     bgSound = this.sound.add('bgSound',{loop:true});
-    bgSoundRetro = this.sound.add('bgSoundRetro',{loop:true,volume:0.2});
+    bgSoundRetro = this.sound.add('bgSoundRetro',{loop:true,volume:0.1});
 
     upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
