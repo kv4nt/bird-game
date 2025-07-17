@@ -283,7 +283,7 @@ function preload() {
     this.load.audio('fartSound5', 'sound/fart5.wav');
     this.load.audio('fartSound6', 'sound/fart6.wav');
     this.load.audio('fartSound7', 'sound/fart7.wav');
-    this.load.audio('fartSound8', 'sound/fart4.mp3');
+    this.load.audio('fartSound8', 'sound/fart3.mp3');
     this.load.audio('fartSoundTriple', 'sound/fart-triple.wav');
     this.load.audio('bgSound', 'sound/bg.wav');
     this.load.audio('bgSoundRetro', 'sound/bg-retro.wav');
