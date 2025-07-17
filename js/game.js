@@ -276,6 +276,7 @@ function preload() {
     //audio
     this.load.audio('dieSound', 'sound/die.wav');
     this.load.audio('fartSound', 'sound/fart.wav');
+    this.load.audio('bgSound', 'sound/bg.wav');
 }
 
 /**
@@ -322,6 +323,7 @@ function create() {
 
     dieSound = this.sound.add('dieSound');
     fartSound = this.sound.add('fartSound');
+    bgSound = this.sound.add('bgSound');
 
     upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
@@ -468,6 +470,7 @@ function hitBird(player) {
     gameOverBanner.visible = true
     restartButton.visible = true
     saveScorev(score);
+    bgSound.stop();
     fartSound.play();
 }
 
@@ -687,6 +690,7 @@ function startGame(scene) {
 
     makePipes(scene)
     dieSound.play();
+    bgSound.play();
 }
 
 async function saveScorev(score) {
