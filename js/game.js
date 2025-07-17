@@ -331,7 +331,7 @@ function create() {
     fartSound1 = this.sound.add('fartSound1');
     fartSound2 = this.sound.add('fartSound2');
     fartSound3 = this.sound.add('fartSound3');
-    fartSoundTriple = this.sound.add('fartSoundTraple');
+    fartSoundTriple = this.sound.add('fartSoundTriple');
     bgSound = this.sound.add('bgSound',{loop:true});
     bgSoundRetro = this.sound.add('bgSoundRetro',{loop:true,volume:0.5});
 
