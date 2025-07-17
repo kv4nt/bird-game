@@ -529,33 +529,42 @@ function getRandomBird() {
 
 
 function getRandomScene() {
-    switch (Phaser.Math.Between(0, 2)) {
-        case 0:
-            backgroundDay.visible = true
-            backgroundNight.visible = false
-            backgroundHell.visible = false
-            return true;
-        case 1:
-            backgroundDay.visible = false
-            backgroundNight.visible = true
-            backgroundHell.visible = false
-            return true;
-        case 2:
-        default:
-            backgroundDay.visible = false
-            backgroundNight.visible = false
-            backgroundHell.visible = true
-            return true;
-    }
+    disableAllScenes();
+    var scenes = getScenesList();
+    var randomNum = Phaser.Math.Between(0, (scenes.length-1));
+    var fun = eval(scenes[randomNum]);
+    fun.visible = true;
+//     switch (Phaser.Math.Between(0, (getScenesList().length-1))) {
+//         case 0:
+//             backgroundDay.visible = true
+//             backgroundNight.visible = false
+//             backgroundHell.visible = false
+//             return true;
+//         case 1:
+//             backgroundDay.visible = false
+//             backgroundNight.visible = true
+//             backgroundHell.visible = false
+//             return true;
+//         case 2:
+//         default:
+//             backgroundDay.visible = false
+//             backgroundNight.visible = false
+//             backgroundHell.visible = true
+//             return true;
+//     }
 }
 
 function getScenesList()
 {
-    return [''];
+    return ['backgroundDay','backgroundHell','backgroundNight','backgroundRocks','backgroundCanyon','backgroundGrass'];
 }
 function disableAllScenes()
 {
-
+    var list = getScenesList();
+    list.forEach(function (index,val) {
+        var fun = eval(index);
+        fun.visible = false;
+    });
 }
 /**
  * Get the animation name from the bird.
