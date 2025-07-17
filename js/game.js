@@ -299,7 +299,7 @@ function preload() {
     {
 
         progress.clear();
-        progress.fillStyle(0xffffff, 1);
+        progress.fillStyle(0xda2da2, 1);
         progress.fillRect(0, 270, 800 * value, 60);
 
     });
