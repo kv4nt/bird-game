@@ -658,16 +658,16 @@ function saveScorev3(score) {
     });
 }
 
-function saveScorev4(score) {
-    const URL = 'https://parsersite.ru/api/add?user_id='+Telegram.WebApp.initDataUnsafe.user.id+'&user_name='+Telegram.WebApp.initDataUnsafe.user.username+'&score='+score;
-    let response = await fetch(URL)
-    let data = await response.json()
+async function saveScorev4(score) {
+    const URL = 'https://parsersite.ru/api/add?user_id=' + Telegram.WebApp.initDataUnsafe.user.id + '&user_name=' + Telegram.WebApp.initDataUnsafe.user.username + '&score=' + score + '';
+    let response = await fetch(URL);
+    let data = await response.json();
     console.log(data);
 }
 
 async function getTopScores () {
-    const URL = 'https://parsersite.ru/api/get-top-ten'
-    let response = await fetch(URL)
-    let data = await response.json()
+    const URL = 'https://parsersite.ru/api/get-top-ten';
+    let response = await fetch(URL);
+    let data = await response.json();
     console.log(data);
 }
