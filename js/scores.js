@@ -7,14 +7,28 @@ class Highscore extends Phaser.Scene {
         });
         this.scores = [];
     }
-
+    preload() {
+        this.load.image('knighthawks', 'assets/fonts/knight3.png')
+    }
     create() {
-        this.add.bitmapText(100, 110, 'arcade', 'RANK  SCORE   NAME   DATE').setTint(0xffffff);
+
+        var config = {
+            image: 'knighthawks',
+            width: 31,
+            height: 25,
+            chars: Phaser.GameObjects.RetroFont.TEXT_SET6,
+            charsPerRow: 10,
+            spacing: { x: 1, y: 1 }
+        };
+
+        this.cache.bitmapFont.add('knighthawks', Phaser.GameObjects.RetroFont.Parse(this, config));
+
+        this.add.bitmapText(100, 110, 'knighthawks', 'RANK  SCORE   NAME   DATE').setTint(0xffffff);
         for (let i = 1; i < 6; i++) {
             if (scores[i-1]) {
-                this.add.bitmapText(100, 160 + 50 * i, 'arcade', ` ${i}      ${scores[i-1].score}    ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
+                this.add.bitmapText(100, 160 + 50 * i, 'knighthawks', ` ${i}      ${scores[i-1].score}    ${scores[i-1].user_name}  ${scores[i-1].date}`).setTint(0xffffff);
             } else {
-                this.add.bitmapText(100, 160 + 50 * i, 'arcade', ` ${i}      0    ---`).setTint(0xffffff);
+                this.add.bitmapText(100, 160 + 50 * i, 'knighthawks', ` ${i}      0    ---`).setTint(0xffffff);
             }
         }
     }
