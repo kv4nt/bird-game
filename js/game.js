@@ -552,7 +552,7 @@ function moveBird() {
         startGame(game.scene.scenes[0])
 
     var fartSounds = ['fartSound1','fartSound2','fartSound3','fartSound4','fartSound5','fartSound6','fartSound7','fartSound8'];
-    var rand = Phaser.Math.Between(0, 2);
+    var rand = Phaser.Math.Between(0, fartSounds.length-1);
     var el = eval(fartSounds[rand]);
 
     el.play();
