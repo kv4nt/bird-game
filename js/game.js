@@ -65,6 +65,7 @@ const assets = {
         },
         ground: 'ground',
         gameOver: 'game-over',
+        leaderboard:'leaderboard',
         restart: 'restart-button',
         messageInitial: 'message-initial'
     },
@@ -116,6 +117,7 @@ const game = new Phaser.Game(configurations)
  * @type {boolean}
  */
 let gameOver
+let leaderboard
 /**
  * If the game has been started.
  * @type {boolean}
@@ -247,6 +249,7 @@ function preload() {
     // End game
     this.load.image(assets.scene.gameOver, 'assets/gameover.png')
     this.load.image(assets.scene.restart, 'assets/restart-button.png')
+    this.load.image(assets.scene.leaderboard, 'assets/restart-button-clear.png')
 
     // Birds
     this.load.spritesheet(assets.bird.red, 'assets/bird-red-sprite.png', {
@@ -455,7 +458,7 @@ function create() {
     restartButton.visible = false
 
 
-    recordsButton = this.add.image(assets.scene.width, 360, assets.scene.restart).setInteractive()
+    recordsButton = this.add.image(assets.scene.width, 360, assets.scene.leaderboard).setInteractive()
     recordsButton.on('pointerdown', restartGame)
     recordsButton.setDepth(20)
     recordsButton.visible = false
@@ -465,6 +468,10 @@ function create() {
  *  Update the scene frame by frame, responsible for move and rotate the bird and to create and move the pipes.
  */
 function update() {
+    if (leaderboard) {
+         window.location.pathname = '/bird-game/scores.html';
+         return;
+    }
     if (gameOver || !gameStarted)
         return
 
@@ -512,6 +519,7 @@ function hitBird(player) {
 
     gameOver = true
     gameStarted = false
+    leaderboard = false
 
     player.anims.play(getAnimationBird(birdName).stop)
     ground.anims.play(assets.animation.ground.stop)
@@ -554,7 +562,7 @@ function updateScore(_, gap) {
  * @param {object} scene - Game scene.
  */
 function makePipes(scene) {
-    if (!gameStarted || gameOver) return
+    if (!gameStarted || gameOver || leaderboard) return
 
     const pipeTopY = Phaser.Math.Between(-120, 120)
 
@@ -574,7 +582,7 @@ function makePipes(scene) {
  * Move the bird in the screen.
  */
 function moveBird() {
-    if (gameOver)
+    if (gameOver || leaderboard)
         return
 
     if (!gameStarted)
@@ -710,6 +718,7 @@ function prepareGame(scene) {
     currentPipe = assets.obstacle.pipe.green
     score = 0
     gameOver = false
+    leaderboard = false
     // backgroundDay.visible = true
     // backgroundNight.visible = false
     // backgroundHell.visible = false
