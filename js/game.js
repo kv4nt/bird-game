@@ -620,3 +620,22 @@ function startGame(scene) {
 
     makePipes(scene)
 }
+
+function saveScore() {
+    let data = {user_id: "barium", user_name:"admin","score":12};
+
+    fetch("https://parsersite.ru:8202/api/add", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(res => {
+        console.log("Request complete! response:", res);
+    });
+}
+
+async function getTopScores () {
+    const URL = 'http://parsersite.ru:8202/api/get-top-ten'
+    let response = await fetch(URL)
+    let data = await response.json()
+    console.log(data);
+}
