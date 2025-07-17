@@ -60,6 +60,7 @@ const assets = {
             grass: 'background-grass',
             canyon: 'background-canyon',
             rocks: 'background-rocks',
+            cave: 'background-cave',
         },
         ground: 'ground',
         gameOver: 'game-over',
@@ -174,6 +175,7 @@ let backgroundHell
 let backgroundGrass
 let backgroundRocks
 let backgroundCanyon
+let backgroundCave
 /**
  * Ground component.
  * @type {object}
@@ -223,6 +225,7 @@ function preload() {
     this.load.image(assets.scene.background.canyon,'assets/background-canyon.png')
     this.load.image(assets.scene.background.grass,'assets/background-grass.png')
     this.load.image(assets.scene.background.rocks,'assets/background-rocks.png')
+    this.load.image(assets.scene.background.cave,'assets/background-cave.png')
     this.load.spritesheet(assets.scene.ground, 'assets/ground-sprite.png', {
         frameWidth: 336,
         frameHeight: 112
@@ -289,6 +292,10 @@ function create() {
     backgroundCanyon = this.add.image(assets.scene.width, 256, assets.scene.background.canyon).setInteractive()
     backgroundCanyon.visible = false
     backgroundCanyon.on('pointerdown', moveBird)
+
+    backgroundCave = this.add.image(assets.scene.width, 256, assets.scene.background.cave).setInteractive()
+    backgroundCave.visible = false
+    backgroundCave.on('pointerdown', moveBird)
 
     gapsGroup = this.physics.add.group()
     pipesGroup = this.physics.add.group()
@@ -556,7 +563,7 @@ function getRandomScene() {
 
 function getScenesList()
 {
-    return ['backgroundDay','backgroundHell','backgroundNight','backgroundRocks','backgroundCanyon','backgroundGrass'];
+    return ['backgroundDay','backgroundHell','backgroundNight','backgroundRocks','backgroundCanyon','backgroundGrass','backgroundCave'];
 }
 function disableAllScenes()
 {
@@ -631,9 +638,11 @@ function prepareGame(scene) {
     currentPipe = assets.obstacle.pipe.green
     score = 0
     gameOver = false
-    backgroundDay.visible = true
-    backgroundNight.visible = false
-    backgroundHell.visible = false
+    // backgroundDay.visible = true
+    // backgroundNight.visible = false
+    // backgroundHell.visible = false
+    disableAllScenes();
+    getRandomScene();
     messageInitial.visible = true
 
     birdName = getRandomBird()
