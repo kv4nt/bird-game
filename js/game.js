@@ -529,6 +529,10 @@ function hitBird(player) {
     recordsButton.visible = true
     bgSoundRetro.stop();
     fartSoundTriple.play();
+    if (leaderboard) {
+        window.location.pathname = '/bird-game/scores.html';
+        return;
+    }
 }
 
 /**
@@ -582,7 +586,11 @@ function makePipes(scene) {
  * Move the bird in the screen.
  */
 function moveBird() {
-    if (gameOver || leaderboard)
+    if (leaderboard) {
+        window.location.pathname = '/bird-game/scores.html';
+        return;
+    }
+    if (gameOver)
         return
 
     if (!gameStarted)
