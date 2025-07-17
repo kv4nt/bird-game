@@ -422,7 +422,7 @@ function hitBird(player) {
 
     gameOverBanner.visible = true
     restartButton.visible = true
-    saveScore(score);
+    saveScorev4(score);
 }
 
 /**
