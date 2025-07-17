@@ -20,7 +20,13 @@ const configurations = {
         preload: preload,
         create: create,
         update: update
-    }
+    },
+    scale: {
+        mode: Phaser.Scale.ENVELOP,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 576,
+        height: 1024,
+    },
 }
 
 /**
@@ -50,7 +56,10 @@ const assets = {
         background: {
             day: 'background-day',
             night: 'background-night',
-            hell: 'background-hell'
+            hell: 'background-hell',
+            grass: 'background-grass',
+            canyon: 'background-canyon',
+            rocks: 'background-rocks',
         },
         ground: 'ground',
         gameOver: 'game-over',
@@ -162,6 +171,9 @@ let backgroundNight
  * @type {object}
  */
 let backgroundHell
+let backgroundGrass
+let backgroundRocks
+let backgroundCanyon
 /**
  * Ground component.
  * @type {object}
@@ -208,6 +220,9 @@ function preload() {
     this.load.image(assets.scene.background.day, 'assets/background-day.png')
     this.load.image(assets.scene.background.night, 'assets/background-night.png')
     this.load.image(assets.scene.background.hell,'assets/background-hell.png')
+    this.load.image(assets.scene.background.canyon,'assets/background-canyon.png')
+    this.load.image(assets.scene.background.grass,'assets/background-grass.png')
+    this.load.image(assets.scene.background.rocks,'assets/background-rocks.png')
     this.load.spritesheet(assets.scene.ground, 'assets/ground-sprite.png', {
         frameWidth: 336,
         frameHeight: 112
@@ -265,6 +280,15 @@ function create() {
     backgroundHell = this.add.image(assets.scene.width, 256, assets.scene.background.hell).setInteractive()
     backgroundHell.visible = false
     backgroundHell.on('pointerdown', moveBird)
+    backgroundGrass = this.add.image(assets.scene.width, 256, assets.scene.background.grass).setInteractive()
+    backgroundGrass.visible = false
+    backgroundGrass.on('pointerdown', moveBird)
+    backgroundRocks = this.add.image(assets.scene.width, 256, assets.scene.background.rocks).setInteractive()
+    backgroundRocks.visible = false
+    backgroundRocks.on('pointerdown', moveBird)
+    backgroundCanyon = this.add.image(assets.scene.width, 256, assets.scene.background.canyon).setInteractive()
+    backgroundCanyon.visible = false
+    backgroundCanyon.on('pointerdown', moveBird)
 
     gapsGroup = this.physics.add.group()
     pipesGroup = this.physics.add.group()
@@ -422,7 +446,7 @@ function hitBird(player) {
 
     gameOverBanner.visible = true
     restartButton.visible = true
-    saveScorev4(score);
+    saveScorev(score);
 }
 
 /**
@@ -524,6 +548,15 @@ function getRandomScene() {
             return true;
     }
 }
+
+function getScenesList()
+{
+    return [''];
+}
+function disableAllScenes()
+{
+
+}
 /**
  * Get the animation name from the bird.
  * @param {string} birdColor - Game bird color asset.
@@ -622,43 +655,7 @@ function startGame(scene) {
     makePipes(scene)
 }
 
-function saveScore(score) {
-    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
-    console.log('data',data);
-    fetch("https://parsersite.ru/api/add", {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    }).then(res => {
-        console.log("Request complete! response:", res);
-    });
-}
-
-function saveScorev2(score) {
-    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
-    console.log('data',data);
-    fetch("https://parsersite.ru/api/add", {
-        method: "GET",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    }).then(res => {
-        console.log("Request complete! response:", res);
-    });
-}
-
-function saveScorev3(score) {
-    let data = {user_id: Telegram.WebApp.initDataUnsafe.user.id, user_name: Telegram.WebApp.initDataUnsafe.user.username,score:score};
-    console.log('data',data);
-    fetch("https://parsersite.ru/api/add", {
-        method: "PUT",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    }).then(res => {
-        console.log("Request complete! response:", res);
-    });
-}
-
-async function saveScorev4(score) {
+async function saveScorev(score) {
     const URL = 'https://parsersite.ru/api/add?user_id=' + Telegram.WebApp.initDataUnsafe.user.id + '&user_name=' + Telegram.WebApp.initDataUnsafe.user.username + '&score=' + score + '';
     let response = await fetch(URL);
     let data = await response.json();
