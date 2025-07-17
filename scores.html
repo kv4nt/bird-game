@@ -77,9 +77,16 @@
 		type: 'GET',
 		url: 'https://parsersite.ru/api/get-top-ten',
 		success: function(data) {
+			$('.table body').html('');
 			data.forEach(function (index,val) {
 				console.log('index',index);
 				console.log('val',val);
+				$('.table body').append('<tr>' +
+						'<td>'+index+'</td>' +
+						'<td>'+val.user_name+'</td>' +
+						'<td>'+val.score+'</td>' +
+						'<td>'+val.date+'</td>' +
+						'</tr>');
 			})
 		},
 		error: function(xhr) {
