@@ -734,6 +734,7 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
+    dieSound.play();
     bgSoundRetro.play();
 }
 
