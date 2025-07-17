@@ -531,6 +531,7 @@ function moveBird() {
     if (!gameStarted)
         startGame(game.scene.scenes[0])
 
+    fartSound.play();
     player.setVelocityY(-400)
     player.angle = -15
     framesMoveUp = 5
