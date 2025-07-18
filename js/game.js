@@ -13,7 +13,7 @@ const configurations = {
             gravity: {
                 y: 300
             },
-            debug: true
+            debug: false
         }
     },
     scene: {
@@ -242,7 +242,7 @@ function preload() {
     loadingText.setOrigin(0.5, 0.5);
 
     var percentText = this.make.text({
-        x: 40,
+        x: width / 2,
         y: height / 2 - 5,
         text: '0%',
         style: {
@@ -267,7 +267,7 @@ function preload() {
         percentText.setText(parseInt(value * 100) + '%');
         progressBar.clear();
         progressBar.fillStyle(0xffffff, 1);
-        progressBar.fillRect(40, 280, 300 * value, 30);
+        progressBar.fillRect(40, 270, 300 * value, 30);
     });
 
     this.load.on('fileprogress', function (file) {
