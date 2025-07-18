@@ -226,7 +226,7 @@ function preload() {
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 220, 50);
+    progressBox.fillRect(40, 270, 220, 50);
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
@@ -267,7 +267,7 @@ function preload() {
         percentText.setText(parseInt(value * 100) + '%');
         progressBar.clear();
         progressBar.fillStyle(0xffffff, 1);
-        progressBar.fillRect(250, 280, 300 * value, 30);
+        progressBar.fillRect(50, 280, 300 * value, 30);
     });
 
     this.load.on('fileprogress', function (file) {
