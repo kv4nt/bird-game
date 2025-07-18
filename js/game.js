@@ -242,7 +242,7 @@ function preload() {
     loadingText.setOrigin(0.5, 0.5);
 
     var percentText = this.make.text({
-        x: width / 2,
+        x: 40,
         y: height / 2 - 5,
         text: '0%',
         style: {
