@@ -254,7 +254,7 @@ function preload() {
 
     var assetText = this.make.text({
         x: width / 2,
-        y: height / 2 + 50,
+        y: height / 2 + 70,
         text: '',
         style: {
             font: '18px monospace',
