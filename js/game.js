@@ -448,17 +448,17 @@ function create() {
 
     prepareGame(this)
 
-    gameOverBanner = this.add.image(assets.scene.width, 206, assets.scene.gameOver)
+    gameOverBanner = this.add.image(assets.scene.width, 106, assets.scene.gameOver)
     gameOverBanner.setDepth(20)
     gameOverBanner.visible = false
 
-    restartButton = this.add.image(assets.scene.width, 300, assets.scene.restart).setInteractive()
+    restartButton = this.add.image(assets.scene.width, 200, assets.scene.restart).setInteractive()
     restartButton.on('pointerdown', restartGame)
     restartButton.setDepth(20)
     restartButton.visible = false
 
 
-    recordsButton = this.add.image(assets.scene.width, 360, assets.scene.leaderboard).setInteractive()
+    recordsButton = this.add.image(assets.scene.width, 260, assets.scene.leaderboard).setInteractive()
     recordsButton.on('pointerdown', goToScores)
     recordsButton.setDepth(20)
     recordsButton.visible = false
